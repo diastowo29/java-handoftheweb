@@ -23,40 +23,48 @@ public class Config implements Serializable {
 
 	@Column(name = "config")
 	private String config;
-	
+
 	@Column(name = "duration")
 	private String duration;
 
 	@Column(name = "title")
 	private String title;
-	
-	public long getId () {
+
+	@Column(name = "agent")
+	private String agent;
+
+	public long getId() {
 		return id;
 	}
-	
-	public String getDomain () {
+
+	public String getDomain() {
 		return domain;
 	}
-	
-	public String getConfig () {
+
+	public String getConfig() {
 		return config;
 	}
-	
-	public String getDuration () {
+
+	public String getDuration() {
 		return duration;
 	}
-	
-	public String getTitle () {
+
+	public String getTitle() {
 		return title;
+	}
+
+	public String getAgent() {
+		return agent;
 	}
 
 	protected Config() {
 	}
 
-	public Config(String domain, String config, String duration, String title) {
+	public Config(String domain, String config, String duration, String title, String agent) {
 		this.domain = domain;
 		this.config = config;
 		this.duration = duration;
 		this.title = title;
+		this.agent = agent;
 	}
 }

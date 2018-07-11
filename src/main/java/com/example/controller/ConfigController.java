@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.example.model.Config;
 import com.example.repo.ConfigRepository;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/config")
 public class ConfigController {
 
@@ -46,7 +48,7 @@ public class ConfigController {
 		HashMap<String, Object> hMap = new HashMap<>();
 		hMap.put("method", "POST");
 		Config config = configRepo.save(new Config(paramMap.get("domain"), paramMap.get("config"),
-				paramMap.get("duration"), paramMap.get("title")));
+				paramMap.get("duration"), paramMap.get("title"), paramMap.get("agent")));
 		hMap.put("id", config.getId());
 		return new ResponseEntity<Object>(hMap, HttpStatus.OK);
 	}
