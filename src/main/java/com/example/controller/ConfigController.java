@@ -43,6 +43,22 @@ public class ConfigController {
 		return hMap;
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/id")
+	public ResponseEntity<Object> getConfigById(@RequestParam("id") long id) {
+		HashMap<String, Object> hMap = new HashMap<>();
+		HashMap<String, Object> configMap = new HashMap<>();
+		Config conf = configRepo.findById(id).get();
+		System.out.println(conf.getTitle());
+		configMap.put("id", conf.getId());
+		configMap.put("domain", conf.getDomain());
+		configMap.put("title", conf.getTitle());
+		configMap.put("config", conf.getConfig());
+		configMap.put("duration", conf.getDuration());
+
+		hMap.put("config", configMap);
+		return new ResponseEntity<Object>(hMap, HttpStatus.OK);
+	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> postDomain(@RequestBody Map<String, String> paramMap) {
 		HashMap<String, Object> hMap = new HashMap<>();
