@@ -45,20 +45,10 @@ public class ConfigController {
 	public ResponseEntity<Object> postDomain(@RequestBody Map<String, String> paramMap) {
 		HashMap<String, Object> hMap = new HashMap<>();
 		hMap.put("method", "POST");
-		/*
-		 * if (paramMap.get("domain") == null || paramMap.get("domain") == null ||
-		 * paramMap.get("domain") == null || ) { hMap.put("reason",
-		 * "cannot proceed with blank/null value"); return new
-		 * ResponseEntity<Object>(hMap, HttpStatus.BAD_REQUEST); } else if
-		 * (paramMap.get("domain").isEmpty()) { hMap.put("reason",
-		 * "cannot proceed with blank/null value"); return new
-		 * ResponseEntity<Object>(hMap, HttpStatus.BAD_REQUEST); } else {
-		 */
 		Config config = configRepo.save(new Config(paramMap.get("domain"), paramMap.get("config"),
 				paramMap.get("duration"), paramMap.get("title")));
 		hMap.put("id", config.getId());
 		return new ResponseEntity<Object>(hMap, HttpStatus.OK);
-		/* } */
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/all")
@@ -78,7 +68,7 @@ public class ConfigController {
 		hMap.put("config", list);
 		return hMap;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteConfig(@RequestParam("id") long id) {
 		configRepo.deleteById(id);
