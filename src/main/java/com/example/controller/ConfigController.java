@@ -36,6 +36,7 @@ public class ConfigController {
 			hMap.put("title", conf.getTitle());
 			hMap.put("duration", conf.getDuration());
 			hMap.put("config", conf.getConfig());
+			hMap.put("agent", conf.getAgent());
 			list.add(hMap);
 		}
 		hMap = new HashMap<>();
@@ -54,6 +55,7 @@ public class ConfigController {
 		configMap.put("title", conf.getTitle());
 		configMap.put("config", conf.getConfig());
 		configMap.put("duration", conf.getDuration());
+		configMap.put("agent", conf.getAgent());
 
 		hMap.put("config", configMap);
 		return new ResponseEntity<Object>(hMap, HttpStatus.OK);
