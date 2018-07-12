@@ -67,6 +67,7 @@ public class ConfigController {
 		hMap.put("method", "POST");
 		Config config = configRepo.save(new Config(paramMap.get("domain"), paramMap.get("config"),
 				paramMap.get("duration"), paramMap.get("title"), paramMap.get("agent")));
+		hMap.put("title", config.getTitle());
 		hMap.put("id", config.getId());
 		return new ResponseEntity<Object>(hMap, HttpStatus.OK);
 	}
