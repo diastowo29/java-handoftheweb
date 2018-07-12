@@ -93,6 +93,6 @@ public class ConfigController {
 	@RequestMapping(method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteConfig(@RequestParam("id") long id) {
 		configRepo.deleteById(id);
-		return new ResponseEntity<String>(HttpStatus.GONE);
+		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 }
